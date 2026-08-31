@@ -1,3 +1,5 @@
+name: Self Learning Test Suite
+
 on:
   push:
     branches: [ main ]
@@ -25,6 +27,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PYTHONPATH: .
         run: |
           python -m pytest tests/test_verification.py
           python -m backend.scripts.run_learning_loop --cycles 100
